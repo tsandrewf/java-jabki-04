@@ -73,6 +73,7 @@ public class Main {
             printArr2D(arr);
             System.out.print("равны: ");
             maxElementCoord(arr);
+            System.out.println();
         }
 
         {
@@ -173,8 +174,8 @@ public class Main {
     // Метод, который проверяет, есть ли в массиве повторяющиеся элементы
     public static boolean hasRepeatedElements(int[] arr) {
         for(int i = 0; i < arr.length; i++) {
-            for(int j = 0; j < arr.length; j++) {
-                if(i != j && arr[i] == arr[j]) {
+            for(int j = i + 1; j < arr.length; j++) {
+                if(arr[i] == arr[j]) {
                     return true;
                 }
             }
