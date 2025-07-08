@@ -27,7 +27,7 @@ public class Main {
         {
             System.out.println();
             printArr(intArr);
-            if(hasRepeatedElements(intArr)) {
+            if (hasRepeatedElements(intArr)) {
                 System.out.println("Содержит повторяющиеся элементы");
             } else {
                 System.out.println("не содержит повторяющиеся элементы");
@@ -38,11 +38,10 @@ public class Main {
             System.out.println();
             int[] arr = {6, 7, 6, 9, 0};
             printArr(arr);
-            if(hasRepeatedElements(arr)) {
-                System.out.println("содержит повторяющиеся элементы");
-            } else {
-                System.out.println("не содержит повторяющиеся элементы");
+            if (!hasRepeatedElements(arr)) {
+                System.out.print("не ");
             }
+            System.out.println("содержит повторяющиеся элементы");
         }
 
         {
@@ -80,18 +79,17 @@ public class Main {
             int[][] matrix = {{1, 3, 5}, {2, 4, 16}, {2, 8, 7}};
             System.out.println("Матрица");
             printArr2D(matrix);
-            if(isSquare(matrix)) {
-                System.out.println("является квадратной");
-            } else {
-                System.out.println("не является квадратной");
+            if (!isSquare(matrix)) {
+                System.out.print("не ");
             }
+            System.out.println("является квадратной");
         }
 
         {
             int[][] matrix = {{1, 3, 5}, {2, 4, 16}, {2, 8, 7}, {8, 9, 0}};
             System.out.println("Матрица");
             printArr2D(matrix);
-            if(isSquare(matrix)) {
+            if (isSquare(matrix)) {
                 System.out.println("является квадратной");
             } else {
                 System.out.println("не является квадратной");
@@ -115,16 +113,18 @@ public class Main {
     // Метод, который выводит массив в консоль
     public static void printArr(int[] arr) {
         System.out.println("Массив целых чисел");
-        for(int j: arr) {
+        for (int j: arr) {
             System.out.println(j);
         }
     }
 
-    // Метод, который принимает массив целых чисел
-    // и возвращает сумму всех его элементов
+    /*
+        Метод, который принимает массив целых чисел
+        и возвращает сумму всех его элементов
+    */
     public static int findSum(int[] arr) {
         int retVal = 0;
-        for(int j: arr) {
+        for (int j: arr) {
             retVal +=j;
         }
 
@@ -133,7 +133,7 @@ public class Main {
 
     // Метод для поиска минимального элемента в одномерном массиве
     public static int findMin(int[] intArray) throws Exception {
-        if(0 == intArray.length) {
+        if (0 == intArray.length) {
             throw new Exception("У пустого массива нет минимального значения");
         }
 
@@ -155,8 +155,8 @@ public class Main {
 
     // Выведите все строки, начинающиеся на букву "М"
     public static void linesBegM(String[] lines) {
-        for(String line: lines) {
-            if(line.startsWith("М")) {
+        for (String line: lines) {
+            if (line.startsWith("М")) {
                 System.out.println(line);
             }
         }
@@ -166,16 +166,16 @@ public class Main {
     public static void invertArr(int[] arr) {
         int[] arrTmp = new int[arr.length];
         System.arraycopy(arr, 0, arrTmp, 0, arr.length);
-        for(int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = arrTmp[arr.length - i - 1];
         }
     }
 
     // Метод, который проверяет, есть ли в массиве повторяющиеся элементы
     public static boolean hasRepeatedElements(int[] arr) {
-        for(int i = 0; i < arr.length; i++) {
-            for(int j = i + 1; j < arr.length; j++) {
-                if(arr[i] == arr[j]) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
                     return true;
                 }
             }
@@ -186,13 +186,15 @@ public class Main {
 
     // Метод, который заменяет все отрицательные числа в массиве на их абсолютные значения
     public static void absArr(int[] arr) {
-        for(int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = Math.abs(arr[i]);
         }
     }
 
-    // Создаем двумерный массив 3x3, заполняем его единицами на главной диагонали
-    // и нулями в остальных ячейках.
+    /*
+       Создаем двумерный массив 3x3, заполняем его единицами на главной диагонали
+       и нулями в остальных ячейках
+     */
     public static int[][] arr2D() {
         return new int[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
     }
@@ -228,7 +230,7 @@ public class Main {
 
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                if(arr[i][j] > maxElement) {
+                if (arr[i][j] > maxElement) {
                     col = j;
                     row = i;
                     maxElement = arr[i][j];
@@ -239,8 +241,10 @@ public class Main {
         System.out.printf("колонка %s, строка %s", col, row);
     }
 
-    // Функция, проверяющая, является ли двумерный массив квадратным
-    // (количество строк = количеству столбцов)
+    /*
+       Функция, проверяющая, является ли двумерный массив квадратным
+       (количество строк = количеству столбцов)
+     */
     public static boolean isSquare(int[][] matrix) {
         if(matrix.length == 0) {
             return true;
@@ -249,9 +253,11 @@ public class Main {
         return (matrix.length == matrix[0].length);
     }
 
-    // Метод, который находит сумму элементов каждой строки,
-    // минимальное и максимальное значение двумерного массива
-    // и выводит результаты
+    /*
+       Метод, который находит сумму элементов каждой строки,
+       минимальное и максимальное значение двумерного массива
+       и выводит результаты
+     */
     public static void matrixProperties(int[][] matrix) {
         int maxElement = Integer.MIN_VALUE, minElement = Integer.MAX_VALUE;
         for (int i = 0; i < matrix.length; i++) {
@@ -260,11 +266,11 @@ public class Main {
             for (int j = 0; j < matrix[i].length; j++) {
                 rowSum += matrix[i][j];
 
-                if(matrix[i][j] > maxElement) {
+                if (matrix[i][j] > maxElement) {
                     maxElement = matrix[i][j];
                 }
 
-                if(matrix[i][j] < minElement) {
+                if (matrix[i][j] < minElement) {
                     minElement = matrix[i][j];
                 }
             }
@@ -276,8 +282,10 @@ public class Main {
         System.out.println();
     }
 
-    // Создайте двумерный массив, заполните его так,
-    // чтобы элементы на четных позициях были 0, на нечетных — 1
+    /*
+       Создайте двумерный массив, заполните его так,
+       чтобы элементы на четных позициях были 0, на нечетных — 1
+     */
     public static int[][] arrEvenOdd(int cols, int rows) {
         int[][] retVal = new int[rows][cols];
 
