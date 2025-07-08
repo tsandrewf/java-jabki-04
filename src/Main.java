@@ -237,8 +237,7 @@ public class Main {
                 }
             }
         }
-        col++; row++;
-        System.out.printf("колонка %s, строка %s", col, row);
+        System.out.printf("колонка %s, строка %s", col + 1, row + 1);
     }
 
     /*
